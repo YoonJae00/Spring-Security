@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    dirver-class-name: com.mysql.cj.jdbc.Driver
+    url :  jdbc:mysql://localhost:3306/login
+    username: ohgiraffers
+    password: ohgiraffers
+
+mybatis:
+  mapper-locations: mapper/**/*.xml

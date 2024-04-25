@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1 align="center">로그인</h1>
+    <form th:action="@{/auth/login}" th:method="post">
+        ID : <input type="text" name="user"> <br>
+        PW : <input type="password" name="pass"> <br>
+        <button>로그인</button>
+    </form>
+</body>
+</html>

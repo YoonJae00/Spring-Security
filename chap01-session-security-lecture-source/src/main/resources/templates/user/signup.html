@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>회원가입</title>
+</head>
+<body>
+    <script>
+        const message = `[[${message}]]`;
+        if (message) {
+            alert(message);
+            window.location.href="/auth/login";
+        }
+    </script>
+    <h1 style="text-align: center">회원가입</h1>
+    <form th:action="@{/user/signup}" th:method="post">
+        ID : <input type="text" name="userId"> <br>
+        이름 : <input type="text" name="userName"> <br>
+        PWD : <input type="password" name="userPass"> <br>
+        권한 :
+        <select name="role">
+            <option value="USER">일반회원</option>
+            <option value="ADMIN">관리자</option>
+        </select> <br>
+        <button>회원가입</button>
+    </form>
+
+</body>
+</html>

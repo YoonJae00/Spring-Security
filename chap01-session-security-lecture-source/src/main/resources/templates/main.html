@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 style="text-align: center; color: red"> Spring Security Login </h1>
+    <hr>
+    <div sec:authorize="hasAnyAuthority('ADMIN')">
+        <h1>관리자 전용 구역</h1>
+    </div>
+    <div sec:authorize="hasAnyAuthority('USER')">
+        <h1>유저 전용 구역</h1>
+    </div>
+    <div>
+        <h1>Login</h1>
+        <a href="auto/login">로그인</a>
+        <a href="user/signup">회원가입</a>
+        <form th:action="@{/auth/logout}" th:method="post">
+            <button>로그아웃</button>
+        </form>
+    </div>
+
+</body>
+</html>
