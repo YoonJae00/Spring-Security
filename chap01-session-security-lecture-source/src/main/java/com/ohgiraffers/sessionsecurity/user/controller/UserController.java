@@ -34,6 +34,7 @@ public class UserController {
             message = "회원가입이 실패하셨습니다.";
         }
         mv.addObject("message", message);
+
         return mv;
     }
 

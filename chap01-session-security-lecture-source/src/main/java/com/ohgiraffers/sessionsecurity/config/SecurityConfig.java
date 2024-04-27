@@ -65,15 +65,17 @@ public class SecurityConfig {
             login.failureHandler(authFailHandler); // 로그인 실패했을 시 처리할 커스텀 핸들러
         }).logout( logout -> {
             logout.logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout"));
+            //사용자가 요청한 요청정보를 확인하여 요청정보 Url이 /login으로 시작하는지 확인한다.
+            //요청한다면 다음단계로(인증처리) 진행되고, 일치하지 않는다면 다음 필터로 진행된다.
             logout.deleteCookies("JSESSIONID"); // 로그아웃 시 사용자의 JSESSIONID 삭제
             logout.invalidateHttpSession(true); // 세션 소멸 허용
             logout.logoutSuccessUrl("/");       // 로그아웃 시 이동할 페이지 설정
         }).sessionManagement( session -> {
             session.maximumSessions(1); // session 의 허용 갯수 제한, -> 한 사용자가 여러 창을 띄워 동시에 여러 개 세션 활성화 방지.
             session.invalidSessionUrl("/"); // 세션이 만료 되었을 때 이동할 페이지
-        }).rememberMe(remeber -> {
-            remeber.tokenValiditySeconds(60 * 60 * 24 * 7); // 토큰의 유효 기간 설정(1주일)
-            remeber.key("mykey");
+        }).rememberMe(remember -> {
+            remember.tokenValiditySeconds(60 * 60 * 24 * 7); // 토큰의 유효 기간 설정(1주일)
+            remember.key("mykey");
 
         }).csrf( csrf -> csrf.disable());   // 추가적인 구현이 필요하기 때문에 비활성화
 
